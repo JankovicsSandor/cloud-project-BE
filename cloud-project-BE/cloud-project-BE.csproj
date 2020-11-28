@@ -12,11 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\cloud-project-BackgroundWorker\cloud-project-BackgroundWorker.csproj" />
+    <ProjectReference Include="..\cloud-project-BL\cloud-project-BL.csproj" />
   </ItemGroup>
 
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using cloud_project_Shared;
+using System.Collections.Generic;
 
 namespace cloud_project_Database.Database
 {
@@ -7,7 +8,7 @@ namespace cloud_project_Database.Database
         IList<Location> Location { get; }
         IList<FacialExpression> FacialExpression { get; }
 
-        void AddLocation(Location newLocation);
+        Location AddLocation(CreateNewLocationModel newLocation);
         void DeleteLocation(int locationId);
         void UpdateLocationData(int locationId, LocationData newLocationData);
     }

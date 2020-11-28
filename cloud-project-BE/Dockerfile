@@ -8,6 +8,10 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["cloud-project-BE/cloud-project-BE.csproj", "cloud-project-BE/"]
+COPY ["cloud-project-BackgroundWorker/cloud-project-BackgroundWorker.csproj", "cloud-project-BackgroundWorker/"]
+COPY ["cloud-project-Database/cloud-project-Database.csproj", "cloud-project-Database/"]
+COPY ["cloud-project-Shared/cloud-project-Shared.csproj", "cloud-project-Shared/"]
+COPY ["cloud-project-BL/cloud-project-BL.csproj", "cloud-project-BL/"]
 RUN dotnet restore "cloud-project-BE/cloud-project-BE.csproj"
 COPY . .
 WORKDIR "/src/cloud-project-BE"

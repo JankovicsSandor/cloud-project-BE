@@ -25,7 +25,7 @@ namespace cloud_project_BackgroundWorker
             while (!stoppingToken.IsCancellationRequested)
             {
                 _dataGenerator.GenerateRandomData();
-                await Task.Delay(TimeSpan.FromMinutes(2), stoppingToken);
+                await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken);
             }
         }
     }

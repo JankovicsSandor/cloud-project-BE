@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using cloud_project_BackgroundWorker;
+using cloud_project_BL.LocationUOW;
 using cloud_project_Database.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +18,8 @@ namespace cloud_project_BE
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,9 +31,21 @@ namespace cloud_project_BE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IRandomDataGenerator, RandomDataGenerator>();
+            services.AddSingleton<ILocationBussinessLogic, LocationBussinessLogic>();
 
             services.AddSingleton<IExpressionDatabase, ExpressionDatabase>();
             services.AddHostedService<Worker>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.AllowAnyOrigin();
+                                      builder.AllowAnyMethod();
+                                      builder.AllowAnyHeader();
+                                  });
+            });
 
             services.AddControllers();
         }
@@ -42,6 +57,8 @@ namespace cloud_project_BE
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
 

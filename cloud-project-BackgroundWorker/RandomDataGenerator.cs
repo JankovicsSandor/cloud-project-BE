@@ -26,6 +26,7 @@ namespace cloud_project_BackgroundWorker
                     if (random.Next(0, 1000) > 500)
                     {
                         newData.FacialExpressionTypeId = faceExpression.Id;
+                        newData.FacialExpression = faceExpression;
                         newData.Value = random.Next(1, 10);
                         newData.Time = DateTime.Now;
                         _expressionDatabase.UpdateLocationData(oneLocation.Id, newData);

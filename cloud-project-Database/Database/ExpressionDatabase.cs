@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using cloud_project_Shared;
 
 namespace cloud_project_Database.Database
 {
@@ -44,9 +45,23 @@ namespace cloud_project_Database.Database
             private set { location = value; }
         }
 
-        public void AddLocation(Location newLocation)
+        public Location AddLocation(CreateNewLocationModel newLocationModel)
         {
+            int id = 1;
+            if (Location.Count != 0)
+            {
+                id = Location.Max(item => item.Id);
+            }
+            
+            Location newLocation = new Location()
+            {
+                LocationName = newLocationModel.LocationName,
+                Name = newLocationModel.Name,
+                Id = id + 1
+            };
             location.Add(newLocation);
+
+            return newLocation;
         }
 
         public void UpdateLocationData(int locationId, LocationData newLocationData)
