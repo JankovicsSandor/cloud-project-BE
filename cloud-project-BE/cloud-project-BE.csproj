@@ -11,5 +11,13 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\cloud-project-BackgroundWorker\cloud-project-BackgroundWorker.csproj" />
+  </ItemGroup>
+
 
 </Project>

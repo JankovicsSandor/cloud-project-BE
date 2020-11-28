@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "cloud_project_BackgroundWorker": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
